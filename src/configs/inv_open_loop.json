@@ -1,0 +1,88 @@
+{
+  "_comment": "PTES Dynamic Perturbation — Open-Loop Inventory Control",
+  "run_id": "inv_open_loop",
+
+  "fluid": {
+    "name": "REFPROP::Nitrogen",
+    "fallback": "Nitrogen",
+    "gamma": 1.4,
+    "R_gas": 296.8,
+    "cp_gas": 1039.0
+  },
+
+  "thermodynamics": {
+    "T_max_K": 700.0,
+    "T_min_K": 200.0,
+    "T_env_K": 293.15,
+    "P_low_Pa": 3.0e5,
+    "P_high_Pa": 30.0e5,
+    "eta_poly_c": 0.88,
+    "eta_poly_e": 0.88,
+    "m_dot_design": 2.0
+  },
+
+  "heat_exchangers": {
+    "eps_re": 0.95,
+    "fp_re": 0.010,
+    "fp_ex": 0.001,
+    "dT_HR": 10.0,
+    "dT_CR": 10.0,
+    "dP_HR": 200.0,
+    "dP_CR": 200.0
+  },
+
+  "packed_bed": {
+    "rho_solid": 2600.0,
+    "cp_solid": 900.0,
+    "lam_solid": 2.0,
+    "eps_bed": 0.38,
+    "d_part": 0.025,
+    "L_tank": 5.0,
+    "D_tank": 1.2,
+    "mu_gas": 2.0e-5,
+    "lam_gas": 0.032,
+    "Pr_gas": 0.71,
+    "N_x": 50,
+    "tau_hot_storage": 89.0,
+    "tau_cold_storage": 104.0
+  },
+
+  "shaft": {
+    "N_design_rpm": 3000.0,
+    "P_motor_rated": 500000.0,
+    "tau_shaft": 62.0,
+    "K_fric": 0.012,
+    "K_ol": 1.5,
+    "V_dead_comp": 0.05,
+    "V_dead_exp": 0.05,
+    "V_pipe": 0.10
+  },
+
+  "inventory_control": {
+    "mode": "open_loop",
+    "alpha_min": 0.20,
+    "alpha_max": 1.50,
+    "tau_inv": 30.0,
+    "tau_gov": 0.5,
+    "tau_vol": 5.0,
+    "a_pi": 0.85,
+    "V_inv": 0.5,
+    "Kp": 0.0,
+    "Ki": 0.0,
+    "Kd": 0.0,
+    "tau_f": 5.0,
+    "K_gov": 2000.0
+  },
+
+  "motor": {
+    "eta_motor": 0.97,
+    "eta_gen": 0.97
+  },
+
+  "simulation": {
+    "t_step": 20.0,
+    "t_total": 700.0,
+    "dt": 0.5,
+    "delta_pct_list": [5.0, 50.0]
+  }
+}
